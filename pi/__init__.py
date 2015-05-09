@@ -13,4 +13,6 @@ app = Flask(__name__)
 #mako = MakoTemplates(app)
 
 import pi.views.root_view
+import pi.views.blog_api
+
 
