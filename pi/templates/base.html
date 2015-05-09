@@ -25,7 +25,7 @@
   
   
   <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+  <div class="container-fluid" ng-controller="HeaderCtrl">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
         <span class="sr-only">Toggle navigation</span>
@@ -38,8 +38,8 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
+        <li ng-class="{active: isActive('/')}"><a href="#/">Home</a></li>
+        <li ng-class="{active: isActive('/blogs')}"><a href="#/blogs">Blog</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -60,7 +60,7 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <li><a href="#">Login</a></li>
       </ul>
     </div>
   </div>
@@ -89,6 +89,7 @@
     <script src="/static/libs/angular/angular-route.min.js"></script>
     <script src="/static/libs/ui-bootstrap-tpls-0.13.0.min.js"></script>
     <script src="/static/js/app.js"></script>
+    <script src="/static/js/controller/headerController.js"></script>
     <script src="/static/js/controller/blogController.js"></script>
         {% block scripts %}
         {% endblock %}

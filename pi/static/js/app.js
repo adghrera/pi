@@ -1,5 +1,5 @@
 var myApp = angular.module('myApp', [ 'ui.bootstrap', 'ngRoute',
-		'blogControllers' ]);
+		'blogControllers', 'headerController' ]);
 
 
 myApp.config(['$routeProvider',
