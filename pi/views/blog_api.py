@@ -12,5 +12,5 @@ from pi.utils.json_util import toJson
 
 @app.route("/api/v1/blogs", methods=['GET'])
 def get_blogs():
-    blogs = Blog.query.order_by(Blog.created.desc(), Blog.id.desc()).all()
+    blogs = Blog.query.order_by(Blog.created.desc(), Blog.id.desc()).limit(10).all()
     return Response(toJson(blogs),  mimetype='application/json')

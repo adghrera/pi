@@ -3,7 +3,11 @@ Created on May 9, 2015
 
 @author: Aman
 '''
+import datetime
 import json
+import sys
+import time
+
 
 def toJson(o, cls=None):
     if isinstance(o, (list, tuple)):
@@ -33,7 +37,9 @@ def to_dict(inst, cls=None):
             try:
                 d[c.name] = convert[typ](v)
             except:
-                d[c.name] = "Error:  Failed to covert using ", str(convert[c.type])
+                d[c.name] = "Error:  Failed to covert using ", str(convert[typ])
+                print sys.exc_info()[0]
+                raise
         elif v is None:
             d[c.name] = str()
         else:
@@ -41,4 +47,15 @@ def to_dict(inst, cls=None):
     return d
 
 def convertDatetime(v):
-    return v.isoformat()
+    if v:
+        #return v.isoformat()
+        return to_unix_time(v)
+
+def to_unix_time(ts):
+    #epoch = datetime.datetime.utcfromtimestamp(0) # start of epoch time
+    #my_time = datetime.datetime.strptime(ts, "%Y/%m/%d %H:%M:%S.%f") # plugin your time object
+    #delta = ts - epoch
+    #return delta.total_seconds() * 1000.0
+    epoch=time.mktime(ts.timetuple())+(ts.microsecond/1000000.) 
+    #return int(ts.time_microseconds())
+    return int(epoch * 1000)

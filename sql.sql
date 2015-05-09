@@ -14,7 +14,7 @@ create table blog (
 id int not null primary key auto_increment,
 user varchar(10) not null,
 blog text,
-created datetime
+created TIMESTAMP
 );
 
 insert into blog (user, blog, created) values ('aman','Hello World!!! This is a sample blog.', now());
@@ -28,6 +28,6 @@ name varchar(25),
 email varchar(50),
 passwd varchar(80),
 salt varchar(20),
-created datetime
+created TIMESTAMP
 );
 
