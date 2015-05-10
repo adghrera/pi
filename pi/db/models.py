@@ -8,12 +8,14 @@ from sqlalchemy.sql.schema import Column
 from pi.db.database import Base
 from sqlalchemy.sql.sqltypes import Integer, String, DateTime
 import datetime
+from pi.utils.json_util import toJson
 
 class Blog(Base):
     __tablename__ = 'blog'
     id = Column(Integer, primary_key=True)
     user = Column(String(10))
     blog = Column(String())
+    title = Column(String(80))
     created = Column(DateTime)
 
     def __init__(self, user=None, blog=None):
@@ -22,7 +24,7 @@ class Blog(Base):
         self.created = datetime.datetime.now()
         
     def __repr__(self):
-        return '<User %r>' % (self.user)
+        return '<User %r>' % (toJson(self))
 
 
 class User(Base):
@@ -43,5 +45,5 @@ class User(Base):
         self.created = datetime.datetime.now()
         
     def __repr__(self):
-        return '<User %r>' % (self.id)
+        return '<User %r>' % (toJson(self))
         
