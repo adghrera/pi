@@ -8,7 +8,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from pi import app
 
-engine = create_engine('mysql+mysqlconnector://blog1:blog1@localhost:3306/blog1', pool_recycle=3600)
+engine = create_engine('mysql+mysqlconnector://blog1:blog1@192.168.2.85:3306/blog1', pool_recycle=3600)
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
